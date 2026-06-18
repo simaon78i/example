@@ -1,6 +1,6 @@
 # Hack Computer from Scratch: Hardware & Software Bridge
 
-A bottom-up implementation of a modern 16-bit computer system, starting from fundamental NAND gates and progressing up to building a custom virtual machine translator and compiler stack. This project demonstrates a deep understanding of computer architecture, software compilation, and the seamless interface between hardware and software.
+A bottom-up implementation of a modern 16-bit computer system, starting from fundamental NAND gates and progressing up to building a custom virtual machine translator, compiler stack, and operating system. This project demonstrates a deep understanding of computer architecture, software compilation, and the seamless interface between hardware and software.
 
 ## 🏗️ System Architecture
 
@@ -26,8 +26,21 @@ The software bridge developed to automate the hardware-software interface.
 ### 4. The Virtual Machine Layer (Intermediate Code Translation)
 Building the infrastructure for executing high-level code via a stack-based virtual machine architecture.
 * **Stack Arithmetic:** Translates complex mathematical and logical expressions into stack-oriented Hack assembly commands.
-* **Memory Management:** Implements dynamic mapping and synchronization between global and local virtual segments (`local`, `argument`, `this`, `that`, `pointer`, `temp`, `static`, `constant`) and physical RAM addresses.
-* **Architecture:** Engineered using a strict modular approach featuring an independent instruction `Parser` and an optimized `CodeWriter`.
+* **Memory Management:** Implements dynamic mapping and synchronization between global and local virtual segments and physical RAM addresses.
+* **Architecture:** Engineered using a strict modular approach featuring an independent instruction Parser and an optimized CodeWriter.
+
+### 5. The Compiler Layer (High-Level Language)
+Development of a full compiler for a high-level, object-oriented language (Jack).
+* **Syntax Analysis:** Building a Tokenizer for lexical analysis and a Parser to generate a Parse Tree for structural validation.
+* **Code Generation:** Translating high-level code into Virtual Machine (VM) language by traversing the Parse Tree.
+* **Symbol Table Management:** Managing symbol tables to track variables (local, field, argument, static) and ensure proper memory allocation.
+
+### 6. The Operating System Layer (System Libraries)
+Implementation of a basic operating system library in the Jack language, bridging software and hardware.
+* **Math Library:** Implementing algorithms for complex mathematical calculations (multiplication, division, square root).
+* **Memory Management:** Managing dynamic memory (Heap) via allocation and deallocation of memory blocks.
+* **I/O Drivers:** Developing drivers for screen display (drawing pixels, lines, and strings) and keyboard input.
+* **System Services:** Providing core services that allow complex applications to run on the custom-built hardware.
 
 ---
 
@@ -37,14 +50,17 @@ Building the infrastructure for executing high-level code via a stack-based virt
 * **`Computer-Architecture/`** - The final CPU and Memory integration.
 * **`Assembler/`** - Python source code for the symbolic-to-binary translator.
 * **`VM-Translator/`** - Python implementation of the stack-based VM-to-Assembly backend.
-* **`Assembly-Programs/`** - Low-level code samples (`.asm`) and binary outputs (`.hack`).
+* **`Compiler/`** - Implementation of the Jack compiler (Tokenizer, Parser, Code Generator).
+* **`Operating-System/`** - Core OS libraries and system drivers.
+* **`Assembly-Programs/`** - Low-level code samples and binary outputs.
 
 ---
 
 ## 🛠 Tech Stack
 
-* **Hardware Description:** HDL (mapped as VHDL for architectural clarity)
+* **Hardware Description:** HDL
 * **Software Stack:** Python 3
+* **High-Level Language:** Jack
 * **Low-Level Logic:** Hack Assembly
 * **Simulation Tools:** Nand2Tetris Hardware Simulator, CPU Emulator & VM Emulator
 
